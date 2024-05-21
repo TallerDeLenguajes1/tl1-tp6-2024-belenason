@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.ComponentModel.DataAnnotations;
+
 Console.WriteLine("Hello, World!");
 int a;
 int b;
@@ -43,6 +45,12 @@ do
     Console.WriteLine("[2]. Restar\n");
     Console.WriteLine("[3]. Multiplicar\n");
     Console.WriteLine("[4]. Dividir\n");
+    Console.WriteLine("[5]. Valor absoluto\n");
+    Console.WriteLine("[6]. Cuadrado\n");
+    Console.WriteLine("[7]. Raiz cuadrada\n");
+    Console.WriteLine("[8]. Seno\n");
+    Console.WriteLine("[9]. Coseno\n");
+    Console.WriteLine("[10]. Parte entera\n");
     string operacion = Console.ReadLine();
     if (int.TryParse(operacion, out op) && 1<=op && op<=4)
     {
@@ -74,7 +82,40 @@ do
                 break;
         }
         Console.WriteLine($"El resultado es: {resul}");
-    } 
+    } else if (int.TryParse(operacion, out op) && 5<=op && op<=10)
+    {
+        float numm;
+        string nro;
+        do
+        {
+            Console.WriteLine("Ingrese un numero: \n");
+            nro = Console.ReadLine();
+        } while (!float.TryParse(nro, out numm));
+        double resul = 0;
+        switch (op)
+        {
+            case 5:
+                resul = Math.Abs(numm);
+                break;
+            case 6:
+                resul = numm*numm;
+                break;
+            case 7:
+                resul = Math.Sqrt(numm);
+                break;
+            case 8:
+                resul = Math.Sin(numm);
+                break;
+            case 9:
+                resul = Math.Cos(numm);
+                break;
+            case 10:
+                resul = (int)numm;
+                break;
+
+        }
+        Console.WriteLine($"El resultado es: {resul}");
+    }
     Console.WriteLine("Desea seguir operando?\n");
     Console.WriteLine("[1]. Si\n");
     Console.WriteLine("[0]. No\n");
@@ -84,8 +125,30 @@ do
         control = 1;
     }
 } while (control != 0);
-
-
+float c;
+string n1;
+float d;
+string n2;
+Console.WriteLine("A continuacion ingrese dos numeros\n");
+do
+{
+    Console.WriteLine("Primer numero: ");
+    n1 = Console.ReadLine();
+    Console.WriteLine("\nSegundo numero: ");
+    n2 = Console.ReadLine(); 
+} while (!float.TryParse(n1, out c) || !float.TryParse(n2, out d));
+if (c > d)
+{
+    Console.WriteLine($"\nEl maximo entre los dos numeros es: {c}\n");
+    Console.WriteLine($"El minimo entre los dos numeros es: {d}\n");
+} else if (d > c)
+{
+    Console.WriteLine($"\nEl maximo entre los dos numeros es: {d}\n");
+    Console.WriteLine($"El minimo entre los dos numeros es: {c}\n");
+} else
+{
+    Console.WriteLine("Ambos numeros son iguales\n");
+}
 
 
 
